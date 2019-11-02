@@ -1,0 +1,18 @@
+import Sequelize from 'sequelize';
+import Student from '../app/model/Student';
+import databaseConfig from '../config/database';
+
+const models = [Student];
+
+class Database {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.connection = new Sequelize(databaseConfig);
+    models.map(model => model.init(this.connection));
+  }
+}
+
+export default new Database();
