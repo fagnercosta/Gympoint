@@ -5,12 +5,11 @@ import authMidleware from './app/middlewares/auth';
 
 const routes = new Router();
 
-routes.post('/students', StudentController.store);
-
 routes.post('/sessions', SessionController.store);
 
-routes.post('/teste', authMidleware, (req, res) => {
-  return res.json({ error: 'Deu certo' });
-});
+// Crud de Students
+routes.use(authMidleware);
+routes.post('/students', StudentController.store);
+routes.put('/students', StudentController.updtate);
 
 export default routes;
