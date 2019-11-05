@@ -4,7 +4,7 @@ import Student from '../model/Student';
 class StudentController {
   async store(req, res) {
     // Validaçáo dos dados
-    const schema = Yup.object({
+    const schema = Yup.object().shape({
       name: Yup.string().required(),
       email: Yup.string()
         .email()
