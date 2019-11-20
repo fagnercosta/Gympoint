@@ -61,14 +61,21 @@ class StudentController {
         error: 'Validation Fails.',
       });
     }
-    const { email } = req.body;
+    const { id, email } = req.body;
 
-    const student = await Student.findOne({
-      where: { email },
-    });
+    const student = await Student.findByPk(id);
 
     if (!student) {
       return res.status(400).json({ error: 'Student not found!' });
+    }
+
+    // Verifica se o e-mail informado e o mesmo do Studant
+    if (student.email !== email) {
+      const emailStudent = await Student.findOne({ where: email });
+
+      if (emailStudent) {
+        return res.status(400).json({ error: 'Student email is aleready!' });
+      }
     }
 
     const { name, age, weight, height } = await student.update(req.body);

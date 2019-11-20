@@ -11,7 +11,7 @@ routes.post('/sessions', SessionController.store);
 // Crud de Students
 routes.use(authMidleware);
 routes.post('/students', StudentController.store);
-routes.put('/students', StudentController.updtate);
+routes.put('/students/:id', StudentController.updtate);
 routes.post('/users', UserController.store);
 
 export default routes;
