@@ -2,6 +2,11 @@ import * as Yup from 'yup';
 import Student from '../model/Student';
 
 class StudentController {
+  async index(req, res) {
+    const students = await Student.findAll();
+    return res.json(students);
+  }
+
   async store(req, res) {
     // Validaçáo dos dados
     const schema = Yup.object().shape({

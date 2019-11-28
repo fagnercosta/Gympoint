@@ -4,7 +4,7 @@ class Plan extends Model {
   static init(sequelize) {
     super.init(
       {
-        titlle: Sequelize.STRING,
+        title: Sequelize.STRING,
         duration: Sequelize.INTEGER,
         price: Sequelize.DOUBLE,
         canceled_at: Sequelize.DATE,
@@ -17,4 +17,4 @@ class Plan extends Model {
   }
 }
 
-export default Plan();
+export default Plan;
